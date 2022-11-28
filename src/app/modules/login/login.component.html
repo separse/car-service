@@ -1,0 +1,24 @@
+<form [formGroup]="credentialForm" class="d-flex flex-column">
+    <!-- phone number input -->
+    <div class="row mb-3 justify-content-center">
+        <div class="col-3">
+            <label class="form-label mt-4 me-2" for="username">Username</label>
+            <input 
+                id="username" type="text"
+                class="mt-2 form-control" formControlName="username"
+            >
+        </div>
+        <!-- password input -->
+        <div class="col-3">
+            <label class="form-label mt-4 me-2" for="password">Password</label>
+            <input 
+                type="password"
+                id="password" class="mt-2 form-control" formControlName="password"
+            >
+        </div>
+    </div>
+    <div class="row justify-content-center mb-3">
+        <button type="button" class="col-3 btn btn-primary" (click)="login()">Login</button>
+    </div>
+    <p class="text-center">HINT: you can login with username and password 'admin'!</p>
+</form>

@@ -1,0 +1,59 @@
+<div class="container">
+    <h1 class="mb-5">New Car Form</h1>
+        <p>
+            <span class="badge me-2" [class]="firstStep ? 'bg-success' : 'bg-secondary'">First Step</span>
+            <span class="badge" [class]="firstStep ? 'bg-secondary' : 'bg-success'">Second Step</span>
+        </p>
+
+        <ng-container *ngIf="firstStep">
+            <form [formGroup]="form1" class="row">
+                <div class="col-4 mb-3">
+                    <input class="form-control" formControlName="brand" type="text" placeholder="brand">
+                </div>
+                <div class="col-4 mb-3">
+                    <input class="form-control" formControlName="model" type="text" placeholder="model">
+                </div>
+                <div class="col-4 mb-3">
+                    <input class="form-control" formControlName="car_type" type="text" placeholder="type">
+                </div>
+                <div class="col-4 mb-3">
+                    <input class="form-control" formControlName="fuel" type="text" placeholder="fuel">
+                </div>
+                <div class="col-4 mb-3">
+                    <input class="form-control" formControlName="year" type="text" placeholder="year">
+                </div>
+                <div class="col-4 mb-3">
+                    <input class="form-control" formControlName="shift" type="text" placeholder="shift">
+                </div>
+                <div class="col-4 mb-3">
+                    <input class="form-control" formControlName="color" type="text" placeholder="color">
+                </div>
+                <div class="col-4 mb-3">
+                    <input class="form-control" formControlName="km" type="text" placeholder="km">
+                </div>
+                <div class="form-check col-4 mb-3 ps-5">
+                    <input class="form-check-input" type="checkbox" formControlName="e_car" id="flexCheckDefault">
+                    <label class="form-check-label" for="flexCheckDefault">E-Car</label>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="nextStep()">Go to Second Step</button>
+            </form>
+        </ng-container>
+
+        <ng-container *ngIf="!firstStep">
+            <form [formGroup]="form2" class="row">
+                <button type="button" (click)="addDamage()" class="btn btn-warning col-2 mb-3">Add Damage</button>
+                <div formArrayName="damages">
+                    <div class="row mb-3" *ngFor="let damage of damages().controls; let i=index" [formGroupName]="i">
+                        <div class="col-5">
+                            <input type="text" formControlName="piece" class="form-control" placeholder="which piece of the car has a problem">
+                        </div>
+                        <div class="col-5">
+                            <input type="text" formControlName="price" class="form-control" placeholder="how much money does it cost?">
+                        </div>
+                        <button type="button" class="btn btn-danger col-2" (click)="removeDamage(i)">Remove</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" (click)="submit()">Submit</button>
+            </form>
+        </ng-container>
+</div>

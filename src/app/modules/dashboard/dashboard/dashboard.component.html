@@ -1,0 +1,75 @@
+<!-- add car button -->
+<div class="mb-4 d-flex flex-row-reverse">
+    <button type="button" class="btn btn-danger ms-2" (click)="logout()">Log Out</button>
+    <button type="button" class="btn btn-primary" (click)="addNewCar()">Add New Car</button>
+</div>
+<!-- filter fields -->
+<div class="row mb-4">
+    <h3 class="col-1">Filter</h3>
+    <!-- brand  -->
+    <div class="col-1" [formGroup]="filterForm">
+        <label for="colorFilter">Brand</label>
+        <select id="colorFilter" class="form-select" formControlName="brand">
+            <option *ngFor="let brand of brands">{{ brand }}</option>
+        </select>
+    </div>
+    <!-- model  -->
+    <div class="col-1"  [formGroup]="filterForm">
+        <label for="colorFilter">Model</label>
+        <select id="colorFilter" class="form-select" formControlName="model">
+            <option *ngFor="let model of models">{{ model }}</option>
+        </select>
+    </div>
+    <!-- type  -->
+    <div class="col-1"  [formGroup]="filterForm">
+        <label for="colorFilter">Type</label>
+        <select id="colorFilter" class="form-select" formControlName="type">
+            <option *ngFor="let type of types">{{ type }}</option>
+        </select>
+    </div>
+    <!-- fuel  -->
+    <div class="col-1"  [formGroup]="filterForm">
+        <label for="colorFilter">Fuel</label>
+        <select id="colorFilter" class="form-select" formControlName="fuel">
+            <option *ngFor="let fuel of fuels">{{ fuel }}</option>
+        </select>
+    </div>
+    <!-- year  -->
+    <div class="col-1"  [formGroup]="filterForm">
+        <label for="colorFilter">Year</label>
+        <select id="colorFilter" class="form-select" formControlName="year">
+            <option *ngFor="let year of years">{{ year }}</option>
+        </select>
+    </div>
+    <!-- color  -->
+    <div class="col-1"  [formGroup]="filterForm">
+        <label for="colorFilter">Color</label>
+        <select id="colorFilter" class="form-select" formControlName="color">
+            <option *ngFor="let color of colors">{{ color }}</option>
+        </select>
+    </div>
+    <!-- km  -->
+    <div class="col-1"  [formGroup]="filterForm">
+        <label for="colorFilter">KM</label>
+        <select id="colorFilter" class="form-select" formControlName="km">
+            <option *ngFor="let km of kms">{{ km }}</option>
+        </select>
+    </div>
+    <!-- e-car  -->
+    <div class="col-1"  [formGroup]="filterForm">
+        <label for="colorFilter">E-Car</label>
+        <select id="colorFilter" class="form-select" formControlName="ecar">
+            <option *ngFor="let ecar of ecars">{{ ecar }}</option>
+        </select>
+    </div>
+</div>
+  
+<!-- cars -->
+<div class="container">
+    <div class="row">
+        <div class="col-3" *ngFor="let car of filteredCars">
+            <app-car-card [car]="car"></app-car-card>
+        </div>
+    </div>
+</div>
+

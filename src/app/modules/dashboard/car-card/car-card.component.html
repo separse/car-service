@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="card-body">
+      <h5 class="card-title text-center">{{ car.brand }} {{ car.model }}</h5>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">Type: {{ car.car_type }}</li>
+      <li class="list-group-item">
+        Fuel: {{ car.fuel }}
+        <span *ngIf="car.e_car">(E-Car)</span>
+      </li>
+      <li class="list-group-item">Year: {{ car.year }}</li>
+      <li class="list-group-item">Shift: {{ car.shift }}</li>
+      <li class="list-group-item">color: {{ car.color }}</li>
+      <li class="list-group-item">KM: {{ car.km }}</li>
+      <li class="list-group-item" *ngIf="car.damages && car.damages !== []">
+        <p>Damage</p>
+        <hr>
+        <div *ngFor="let damage of car.damages">
+          <p><span>Piece: </span> {{ damage.piece }}</p>
+          <p><span>Price: </span> {{ damage.price }}</p>
+        </div>
+        <hr>
+      </li>
+    </ul>
+</div>
